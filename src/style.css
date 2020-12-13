@@ -1,3 +1,27 @@
-h1, p {
+* {
   font-family: Lato;
+  color: white;
 }
+body{
+  background-color: #172B4E;
+}
+#break-length{
+  display: inline;
+}
+#session-length{
+  display: inline;
+}
+.arrow-btn{
+  background-color: transparent;
+  border: none;
+}
+#start-stop{
+  background-color: #26489E;
+  border: none;
+    margin-right: .5em;
+}
+#reset{
+  background-color: #26489E;
+  border: none;
+}
+
