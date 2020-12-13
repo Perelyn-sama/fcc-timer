@@ -1,28 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 export default function App() {
   let [breakLength, setbreakLength] = useState(5);
   let [sessionLength, setsessionLength] = useState(25);
 
-  const startingMinutes = sessionLength;
-  let time = startingMinutes * 60;
-
-  const timeLeft = document.getElementById("time-left");
-
-  if (breakLength === 5) {
+  const startStop = () => {
     setInterval(updateCountdown, 1000);
-  } else if (breakLength === 4) {
-    setInterval(updateCountdown, 800);
-  } else if (breakLength === 3) {
-    setInterval(updateCountdown, 600);
-  } else if (breakLength === 2) {
-    setInterval(updateCountdown, 400);
-  } else if (breakLength === 1) {
-    setInterval(updateCountdown, 200);
-  } else {
-    null;
-  }
+  };
+  const timeLeft = e => {
+    console.log(e);
+  };
+
+  // const startingMinutes = sessionLength;
+  // let time = startingMinutes * 60;
+
+  // const timeLeft = document.getElementById("time-left");
+
+  // useEffect(() => {
+  //   if (breakLength === 5) {
+  //     const interval = setInterval(updateCountdown, 1000);
+  //   } else if (breakLength === 4) {
+  //     const interval = setInterval(updateCountdown, 800);
+  //   } else if (breakLength === 3) {
+  //     const interval = setInterval(updateCountdown, 600);
+  //   } else if (breakLength === 2) {
+  //     const interval = setInterval(updateCountdown, 400);
+  //   } else if (breakLength === 1) {
+  //     const interval = setInterval(updateCountdown, 200);
+  //   } else {
+  //     null;
+  //   }
+  // }, []);
 
   function updateCountdown() {
     const minutes = Math.floor(time / 60);
@@ -31,6 +40,7 @@ export default function App() {
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
     // timeLeft.innerHTML = `${minutes} ${seconds}`;
+    console.log(`${minutes} ${seconds}`);
     time--;
   }
   console.log(timeLeft);
@@ -87,8 +97,14 @@ export default function App() {
         &#8595;
       </button>
       <div id="timer-label"> session </div>
-      <div id="time-left"> {sessionLength}:00 </div>
-      <button id="start-stop"> Start / Stop </button>
+      <div onLoad={timeLeft} id="time-left">
+        {" "}
+        {sessionLength}:00{" "}
+      </div>
+      <button onClick={startStop} id="start-stop">
+        {" "}
+        Start / Stop{" "}
+      </button>
       <button onClick={reset} id="reset">
         {" "}
         reset{" "}
