@@ -5,33 +5,20 @@ export default function App() {
   let [breakLength, setbreakLength] = useState(5);
   let [sessionLength, setsessionLength] = useState(25);
 
+
   const startStop = () => {
     setInterval(updateCountdown, 1000);
-  };
-  const timeLeft = e => {
-    console.log(e);
   };
 
   // const startingMinutes = sessionLength;
   // let time = startingMinutes * 60;
+  
+  const timeLeft = document.getElementById("time-left");
+  useEffect(()=>{
+  console.log(timeLeft)
+  
+  })
 
-  // const timeLeft = document.getElementById("time-left");
-
-  // useEffect(() => {
-  //   if (breakLength === 5) {
-  //     const interval = setInterval(updateCountdown, 1000);
-  //   } else if (breakLength === 4) {
-  //     const interval = setInterval(updateCountdown, 800);
-  //   } else if (breakLength === 3) {
-  //     const interval = setInterval(updateCountdown, 600);
-  //   } else if (breakLength === 2) {
-  //     const interval = setInterval(updateCountdown, 400);
-  //   } else if (breakLength === 1) {
-  //     const interval = setInterval(updateCountdown, 200);
-  //   } else {
-  //     null;
-  //   }
-  // }, []);
 
   function updateCountdown() {
     const minutes = Math.floor(time / 60);
@@ -43,7 +30,7 @@ export default function App() {
     console.log(`${minutes} ${seconds}`);
     time--;
   }
-  console.log(timeLeft);
+  console.log(timeLeft == null ? timeLeft: timeLeft.innerHTML.split(':')[0]);
 
   const breakIncrement = () =>
     breakLength < 5 ? setbreakLength(breakLength + 1) : breakLength;
@@ -97,7 +84,7 @@ export default function App() {
         &#8595;
       </button>
       <div id="timer-label"> session </div>
-      <div onLoad={timeLeft} id="time-left">
+      <div  id="time-left">
         {" "}
         {sessionLength}:00{" "}
       </div>
