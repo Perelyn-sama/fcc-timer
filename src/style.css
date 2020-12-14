@@ -1,27 +1,33 @@
 * {
   font-family: Lato;
   color: white;
+  font-size: 1.3em;
+  text-align: center;
 }
-body{
-  background-color: #172B4E;
+body {
+  background-color: #172b4e;
 }
-#break-length{
+.App {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+#break-length {
   display: inline;
 }
-#session-length{
+#session-length {
   display: inline;
 }
-.arrow-btn{
+.arrow-btn {
   background-color: transparent;
   border: none;
 }
-#start-stop{
-  background-color: #26489E;
+#start-stop {
+  background-color: #26489e;
   border: none;
-    margin-right: .5em;
+  margin-right: 0.5em;
 }
-#reset{
-  background-color: #26489E;
+#reset {
+  background-color: #26489e;
   border: none;
 }
-
