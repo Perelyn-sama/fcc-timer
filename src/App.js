@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <div id="break-label"> Break label </div>
+      <div id="break-label"> Break length </div>
       <button
         onClick={breakIncrement}
         className="arrow-btn"
@@ -71,7 +71,7 @@ export default function App() {
       >
         &#8593;
       </button>
-      <div id="break-length"> {breakLength} </div>
+      <p id="break-length"> {breakLength} </p>
       <button
         onClick={breakDecrement}
         className="arrow-btn"
@@ -80,7 +80,7 @@ export default function App() {
         &#8595;
       </button>
       <br />
-      <div id="session-label"> Session label </div>
+      <div id="session-label"> Session length </div>
       <button
         onClick={sessionIncrement}
         className="arrow-btn"
@@ -101,7 +101,7 @@ export default function App() {
         {" "}
         {sessionLength}:00{" "}
       </div>
-      <button onClick={startStop} id="start-stop">
+      <button onClick={startStop} id="start_stop">
         {" "}
         Start / Stop{" "}
       </button>
