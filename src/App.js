@@ -10,7 +10,6 @@ export default function App() {
 
   const startStop = () => {
     const timer = setInterval(countdown, 1000);
-    console.log(countdown(), "button");
     return () => clearInterval(countdown);
   };
 
