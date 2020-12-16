@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import Timer from "react-compound-timer";
 
 export default function App() {
   let [breakLength, setbreakLength] = useState(5);
@@ -10,15 +11,15 @@ export default function App() {
 
   const startStop = () => {
     const timer = setInterval(countdown, 1000);
-    return () => clearInterval(countdown);
+    return () => clearInterval(timer);
   };
 
   const countdown = () => {
     if (time >= 0) {
-      let timeLeft = time % 60;
+      sec = time % 60;
       time--;
-      console.log(timeLeft);
-      return timeLeft;
+      console.log(sec);
+      return sec;
     }
   };
 
@@ -40,6 +41,7 @@ export default function App() {
   return (
     <div className="App">
       <div> {countdown()} </div>
+      <div> {sec} </div>
       <div id="break-label"> Break length </div>
       <button
         onClick={breakIncrement}
@@ -83,6 +85,29 @@ export default function App() {
         {" "}
         reset{" "}
       </button>
+      
+      <Timer initialTime={55000}>
+        {({ start, resume, pause, stop, reset, timerState }) => (
+          <React.Fragment>
+            <div>
+              <Timer.Days /> days
+              <Timer.Hours /> hours
+              <Timer.Minutes /> minutes
+              <Timer.Seconds /> seconds
+              <Timer.Milliseconds /> milliseconds
+            </div>
+            <div>{timerState}</div>
+            <br />
+            <div>
+              <button onClick={start}>Start</button>
+              <button onClick={pause}>Pause</button>
+              <button onClick={resume}>Resume</button>
+              <button onClick={stop}>Stop</button>
+              <button onClick={reset}>Reset</button>
+            </div>
+          </React.Fragment>
+        )}
+      </Timer>
     </div>
   );
 }
