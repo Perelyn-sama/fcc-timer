@@ -17,11 +17,11 @@ export default function App() {
   const sessionDecrement = () =>
     sessionLength > 1 ? setsessionLength(sessionLength - 1) : sessionLength;
 
-  const reset = () => {
+  const defReset = () => {
     setbreakLength(5);
     setsessionLength(25);
   };
-  console.log(<Timer.Seconds />);
+  console.log(miliSec);
   return (
     <div className="App">
       <div id="break-label"> Break length </div>
@@ -91,6 +91,7 @@ export default function App() {
                 onClick={() => {
                   reset();
                   stop();
+                  defReset();
                 }}
               >
                 Reset
