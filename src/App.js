@@ -5,23 +5,7 @@ import Timer from "react-compound-timer";
 export default function App() {
   let [breakLength, setbreakLength] = useState(5);
   let [sessionLength, setsessionLength] = useState(25);
-  let [min, setMin] = useState(sessionLength);
-  let [sec, setSec] = useState(0);
-  let [time, setTime] = useState(min * 60);
-
-  const startStop = () => {
-    const timer = setInterval(countdown, 1000);
-    return () => clearInterval(timer);
-  };
-
-  const countdown = () => {
-    if (time >= 0) {
-      sec = time % 60;
-      time--;
-      console.log(sec);
-      return sec;
-    }
-  };
+  let [miliSec, setmilisec] = useState(sessionLength * 60 * 1000);
 
   const breakIncrement = () => setbreakLength(breakLength + 1);
 
@@ -40,8 +24,6 @@ export default function App() {
 
   return (
     <div className="App">
-      <div> {countdown()} </div>
-      <div> {sec} </div>
       <div id="break-label"> Break length </div>
       <button
         onClick={breakIncrement}
@@ -77,7 +59,7 @@ export default function App() {
       </button>
       <div id="timer-label"> session </div>
       <div id="time-left"> {sessionLength}:00 </div>
-      <button onClick={startStop} id="start_stop">
+      <button  id="start_stop">
         {" "}
         Start / Stop{" "}
       </button>
@@ -85,24 +67,30 @@ export default function App() {
         {" "}
         reset{" "}
       </button>
-      
-      <Timer initialTime={55000}>
+
+      <Timer initialTime={miliSec} direction="backward" startImmediately={false}>
         {({ start, resume, pause, stop, reset, timerState }) => (
           <React.Fragment>
-            <div>
-              <Timer.Days /> days
-              <Timer.Hours /> hours
-              <Timer.Minutes /> minutes
-              <Timer.Seconds /> seconds
-              <Timer.Milliseconds /> milliseconds
-            </div>
+            <Timer.Days /> days
+            <br />
+            <Timer.Hours /> hours
+            <br />
+            <Timer.Minutes /> minutes
+            <br />
+            <Timer.Seconds /> seconds
+            <br />
+            <Timer.Milliseconds /> milliseconds
             <div>{timerState}</div>
             <br />
             <div>
               <button onClick={start}>Start</button>
+
               <button onClick={pause}>Pause</button>
+
               <button onClick={resume}>Resume</button>
+
               <button onClick={stop}>Stop</button>
+
               <button onClick={reset}>Reset</button>
             </div>
           </React.Fragment>
