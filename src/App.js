@@ -4,30 +4,25 @@ import "./style.css";
 export default function App() {
   let [breakLength, setbreakLength] = useState(5);
   let [sessionLength, setsessionLength] = useState(25);
+  let [min, setMin] = useState(sessionLength);
+  let [sec, setSec] = useState(0);
+  let [time, setTime] = useState(min * 60);
 
   const startStop = () => {
-    setInterval(updateCountdown, 1000);
+    const timer = setInterval(countdown, 1000);
+    console.log(countdown(), "button");
+    return () => clearInterval(countdown);
   };
 
-  // const startingMinutes = sessionLength;
-  // let time = startingMinutes * 60;
-
-  const timeLeft = document.getElementById("time-left");
-  useEffect(() => {
-    console.log(timeLeft);
-  });
-
-  function updateCountdown() {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    // timeLeft.innerHTML = `${minutes} ${seconds}`;
-    console.log(`${minutes} ${seconds}`);
-    time--;
-  }
-  console.log(timeLeft == null ? timeLeft : timeLeft.innerHTML.split(":")[0]);
+  const countdown = () => {
+    if (time >= 0) {
+      let timeLeft = time % 60;
+      time--;
+      console.log(timeLeft);
+      return timeLeft;
+    }
+  };
+  console.log(countdown(), "bottom one");
 
   const breakIncrement = () => setbreakLength(breakLength + 1);
 
@@ -46,6 +41,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <div> {countdown()} </div>
       <div id="break-label"> Break length </div>
       <button
         onClick={breakIncrement}
