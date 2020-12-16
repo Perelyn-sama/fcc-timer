@@ -21,7 +21,6 @@ export default function App() {
       return timeLeft;
     }
   };
-  console.log(countdown(), "bottom one");
 
   const breakIncrement = () => setbreakLength(breakLength + 1);
 
