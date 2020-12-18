@@ -22,11 +22,11 @@ body {
   background-color: transparent;
   border: none;
 }
-/* #start_stop {
+#start_stop {
   background-color: #26489e;
   border: none;
   margin-right: 0.5em;
-} */
+}
 #reset {
   background-color: #26489e;
   border: none;
