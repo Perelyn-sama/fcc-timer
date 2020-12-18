@@ -19,7 +19,12 @@ export default function App() {
   const sessionDecrement = () =>
     sessionLength > 1 ? setsessionLength(sessionLength - 1) : sessionLength;
 
-  const reset = () => setDate(Date.now() + miliSec);
+
+  const reset = () => {
+    setDate(Date.now() + miliSec);
+    setbreakLength(5);
+    setsessionLength(25);
+  };
 
   const renderer = ({ api, formatted }) => {
     const { minutes, seconds } = formatted;
