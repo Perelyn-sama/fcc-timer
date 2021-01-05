@@ -34,7 +34,7 @@ export default function App() {
 
   const startStop = () => {
     const innerFunc = () => {
-      let timeleft = miliSec % 60;
+      let timeleft = (miliSec - 1) % 60;
       miliSec--;
       timeleft === 59 ? setMins(prevstate => prevstate - 1) : timeleft;
       setSec(timeleft);
